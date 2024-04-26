@@ -107,12 +107,43 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /*overflow: hidden;*/
+            overflow: hidden;
+            transform: scale(0);
+            transition: transform .5s ease, height .2s ease;
+        }
+
+        .wrapper.active-popup {
+            transform: scale(1); 
+        }
+
+        .wrapper.active /*classe vinda do jscript*/ {
+            height: 520px;
         }
 
         .wrapper .form-box {
             width: 100%;
             padding: 40px;
+        }
+
+        .wrapper .form-box.login {
+            transition: transform .18s ease;
+            transform: translateX(0);
+        }
+
+        .wrapper.active .form-box.login {
+            transition: none;
+            transform: translateX(-400px);
+        }
+
+        .wrapper .form-box.register {
+            position: absolute;
+            transition: none;
+            transform: translateX(400px);
+        }
+
+        .wrapper.active .form-box.register {
+            transition: transform .18s ease;
+            transform: translateX(0);
         }
 
         .wrapper .icon-close {
@@ -286,9 +317,15 @@
         </div>
 
         <div class="form-box register">
-            <h2>Register</h2>
+            <h2>Registration</h2>
             
             <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail"></ion-icon></span>
                     <input type="email" required>
@@ -300,14 +337,13 @@
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
-                    <label><input type="checkbox">Remember me</label>
-                    <a href="#">Forgot Password?</a>
+                    <label><input type="checkbox">I agree to the terms & conditions</label>
                 </div>
 
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Register</button>
 
                 <div class="login-register">
-                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    <p>Already have an account? <a href="#" class="register-link">Login</a></p>
                 </div>
             </form>
         </div>
